@@ -5,6 +5,7 @@ import { useStore } from "@/lib/store";
 import { motion, AnimatePresence } from "framer-motion";
 import { Activity, User, Bed, Clock } from "lucide-react";
 
+
 function timeAgo(date: Date) {
     const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
     let interval = seconds / 3600;
