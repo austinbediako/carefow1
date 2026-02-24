@@ -2,14 +2,16 @@
 
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
+import { useStore } from "@/lib/store";
 import {
   LayoutDashboard,
   Bed,
   Users,
   Activity,
   LogOut,
-  ClipboardList
+  ClipboardList,
+  ArrowUpRight
 } from "lucide-react";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
@@ -18,12 +20,19 @@ const NAV_ITEMS = [
   { label: "Command Center", href: "/dashboard", icon: LayoutDashboard },
   { label: "ED Requests", href: "/dashboard/requests", icon: Users },
   { label: "Ward View", href: "/dashboard/wards", icon: Bed },
-  { label: "Discharges", href: "/dashboard/discharges", icon: LogOut },
+  { label: "Discharges", href: "/dashboard/discharges", icon: ArrowUpRight },
   { label: "Audit Logs", href: "/dashboard/audit", icon: ClipboardList },
 ];
 
 export function Sidebar() {
   const pathname = usePathname();
+  const router = useRouter();
+  const { setRole } = useStore();
+
+  const handleLogout = () => {
+    setRole(null);
+    router.push("/");
+  };
 
   return (
     <aside className="fixed left-0 top-0 z-40 flex h-screen w-64 flex-col border-r border-slate-200 bg-white/80 backdrop-blur-xl transition-all duration-300">
@@ -76,14 +85,23 @@ export function Sidebar() {
 
       <div className="p-4 mt-auto">
         <div className="rounded-[16px] bg-white p-4 border border-slate-100 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center text-blue-600 font-bold text-sm ring-2 ring-white shadow-sm">
-              JD
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-3 overflow-hidden">
+              <div className="h-10 w-10 rounded-full bg-blue-50 flex-shrink-0 flex items-center justify-center text-blue-600 font-bold text-sm ring-2 ring-white shadow-sm">
+                JD
+              </div>
+              <div className="min-w-0">
+                <p className="text-sm font-semibold text-slate-900 truncate">Dr. John Doe</p>
+                <p className="text-[11px] font-medium text-slate-500 truncate">Chief Medical Officer</p>
+              </div>
             </div>
-            <div>
-              <p className="text-sm font-semibold text-slate-900">Dr. John Doe</p>
-              <p className="text-[11px] font-medium text-slate-500">Chief Medical Officer</p>
-            </div>
+            <button
+              onClick={handleLogout}
+              className="group flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full text-slate-400 hover:bg-red-50 hover:text-red-600 transition-colors"
+              title="Sign Out"
+            >
+              <LogOut className="h-5 w-5" />
+            </button>
           </div>
         </div>
       </div>

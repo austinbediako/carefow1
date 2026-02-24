@@ -11,7 +11,7 @@ interface AppState {
   isHydrated: boolean;
 
   // Actions
-  setRole: (role: UserRole) => void;
+  setRole: (role: UserRole | null) => void;
   initializeData: () => void;
   allocateBed: (requestId: string, wardId: string, bedId: string) => void;
   dischargePatient: (dischargeId: string) => void;
