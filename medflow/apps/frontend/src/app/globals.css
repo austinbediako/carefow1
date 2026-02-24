@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter);
+  --color-med-bg: #F5F5F7;
+  --color-med-card: #FFFFFF;
+  --color-med-text: #1C1C1E;
+  --color-med-sub: #6E6E73;
+  --color-med-border: #E5E5EA;
+
+  /* Semantic Colors (Muted Apple Style) */
+  --color-semantic-blue: #007AFF;
+  --color-semantic-blue-bg: #E5F3FF;
+  --color-semantic-green: #34C759;
+  --color-semantic-green-bg: #E3FBE6;
+  --color-semantic-amber: #FF9500;
+  --color-semantic-amber-bg: #FFF3DA;
+  --color-semantic-red: #FF3B30;
+  --color-semantic-red-bg: #FFE5E5;
+
+  /* Glassmorphism */
+  --backdrop-blur: 20px;
+  --glass-bg: rgba(255, 255, 255, 0.75);
+}
+
+@utility glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--backdrop-blur));
+  -webkit-backdrop-filter: blur(var(--backdrop-blur));
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+@utility squircle {
+  border-radius: 18px; /* Approximate squircle feel */
+  /* Advanced CSS for continuous curvature could be added via mask-image, but radius is sufficient for MVP */
+}
+
+@utility soft-shadow {
+  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.04), 0 2px 8px -1px rgba(0, 0, 0, 0.02);
+}
+
+@utility card-hover {
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 32px -4px rgba(0, 0, 0, 0.06), 0 4px 12px -2px rgba(0, 0, 0, 0.03);
+  }
+}
+
+body {
+  font-feature-settings: "cv11", "ss01";
+  background-color: var(--color-med-bg);
+  color: var(--color-med-text);
+}
