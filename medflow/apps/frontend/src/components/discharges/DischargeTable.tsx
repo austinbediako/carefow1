@@ -5,7 +5,6 @@ import { Discharge, Ward } from "@/types";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { motion, AnimatePresence } from "framer-motion";
-import { LogOut, Calendar, AlertCircle } from "lucide-react";
 
 interface DischargeTableProps {
   discharges: Discharge[];
@@ -50,7 +49,7 @@ export function DischargeTable({ discharges, wards, onDischarge }: DischargeTabl
                 </td>
                 <td className="px-6 py-4">
                   <div className="flex items-center gap-1.5 text-slate-500">
-                    <Calendar className="h-3.5 w-3.5" />
+                    <img src="https://img.icons8.com/ios-filled/50/94a3b8/calendar--v1.png" alt="calendar" className="h-3.5 w-3.5 object-contain" />
                     {new Date(discharge.plannedDate).toLocaleDateString()}
                   </div>
                 </td>
@@ -66,7 +65,7 @@ export function DischargeTable({ discharges, wards, onDischarge }: DischargeTabl
                     className="border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-red-600 hover:border-red-200"
                     onClick={() => onDischarge(discharge.id)}
                   >
-                    <LogOut className="mr-2 h-3.5 w-3.5" />
+                    <img src="https://img.icons8.com/ios-filled/50/dc2626/logout-rounded.png" alt="logout" className="mr-2 h-3.5 w-3.5 object-contain" />
                     Process Discharge
                   </Button>
                 </td>
@@ -76,12 +75,12 @@ export function DischargeTable({ discharges, wards, onDischarge }: DischargeTabl
 
           {discharges.length === 0 && (
             <tr>
-                <td colSpan={5} className="px-6 py-12 text-center text-slate-400">
-                    <div className="flex flex-col items-center justify-center gap-2">
-                        <AlertCircle className="h-8 w-8 text-slate-300" />
-                        <p>No planned discharges.</p>
-                    </div>
-                </td>
+              <td colSpan={5} className="px-6 py-12 text-center text-slate-400">
+                <div className="flex flex-col items-center justify-center gap-2">
+                  <img src="https://img.icons8.com/ios-filled/50/cbd5e1/error--v1.png" alt="alert" className="h-8 w-8 object-contain" />
+                  <p>No planned discharges.</p>
+                </div>
+              </td>
             </tr>
           )}
         </tbody>

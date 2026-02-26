@@ -6,7 +6,6 @@ import { useStore } from "@/lib/store";
 import { BedCard } from "@/components/wards/BedCard";
 import { Button } from "@/components/ui/Button";
 import { BedStatus } from "@/types";
-import { ArrowLeft, Filter } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { clsx } from "clsx";
 
@@ -50,7 +49,7 @@ export default function WardDetailPage() {
     <div className="space-y-6">
       <div className="flex items-center gap-4">
         <Button variant="ghost" size="icon" onClick={() => router.back()}>
-          <ArrowLeft className="h-5 w-5" />
+          <img src="https://img.icons8.com/color/48/left.png" alt="Back" className="w-5 h-5 object-contain" />
         </Button>
         <div>
           <h1 className="text-3xl font-bold tracking-tight text-slate-900">

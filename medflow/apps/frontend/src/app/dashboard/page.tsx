@@ -4,7 +4,6 @@ import React, { useEffect, useMemo } from "react";
 import { useStore } from "@/lib/store";
 import { KPICard } from "@/components/dashboard/KPICard";
 import { WardSummaryCard } from "@/components/dashboard/WardSummaryCard";
-import { BedDouble, Activity, Users, Stethoscope, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 
 export default function DashboardPage() {
@@ -88,7 +87,7 @@ export default function DashboardPage() {
             title="Occupancy Rate"
             value={stats.occupancyRate}
             suffix="%"
-            icon={Activity}
+            icon="https://img.icons8.com/color/48/activity.png"
             color={stats.occupancyRate > 90 ? "red" : "blue"}
             trend={{ value: 2, isPositive: true }}
           />
@@ -97,7 +96,7 @@ export default function DashboardPage() {
           <KPICard
             title="Available Beds"
             value={stats.available}
-            icon={BedDouble}
+            icon="https://img.icons8.com/color/48/hospital-bed.png"
             color="green"
             trend={{ value: 5, isPositive: true }}
           />
@@ -106,7 +105,7 @@ export default function DashboardPage() {
           <KPICard
             title="ED Awaiting Bed"
             value={stats.edPending}
-            icon={Users}
+            icon="https://img.icons8.com/color/48/user-group-man-man.png"
             color={stats.edPending > 5 ? "red" : "amber"}
             trend={{ value: 12, isPositive: false }}
           />
@@ -115,7 +114,7 @@ export default function DashboardPage() {
           <KPICard
             title="ICU Availability"
             value={stats.icuAvailable}
-            icon={Stethoscope}
+            icon="https://img.icons8.com/color/48/stethoscope.png"
             color={stats.icuAvailable < 2 ? "red" : "blue"}
           />
         </motion.div>

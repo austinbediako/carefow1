@@ -1,4 +1,4 @@
-import { Bed, Ward, AdmissionRequest, Discharge, AuditLog, BedStatus, BedType, WardType } from "../types";
+import { Bed, Ward, AdmissionRequest, Discharge, BedStatus, BedType, WardType } from "../types";
 
 const getRandomStatus = (): BedStatus => {
   const rand = Math.random();

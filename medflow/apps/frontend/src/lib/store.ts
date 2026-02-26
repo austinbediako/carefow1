@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { Bed, Ward, AdmissionRequest, Discharge, UserRole, AuditLog, BedStatus, BedType } from "../types";
+import { Bed, Ward, AdmissionRequest, Discharge, UserRole, AuditLog, BedStatus } from "../types";
 import { generateWards, generateRequests, generateDischarges } from "./mockData";
 
 interface AppState {
@@ -157,7 +157,7 @@ export const useStore = create<AppState>((set, get) => ({
         // ... (can add more rules)
 
         if (score > 0) {
-            suggestions.push({ bed, ward, score });
+          suggestions.push({ bed, ward, score });
         }
       });
     });

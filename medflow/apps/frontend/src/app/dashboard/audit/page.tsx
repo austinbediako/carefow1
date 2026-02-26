@@ -3,16 +3,14 @@
 import React, { useEffect } from "react";
 import { useStore } from "@/lib/store";
 import { motion, AnimatePresence } from "framer-motion";
-import { Activity, User, Bed, Clock } from "lucide-react";
-
 
 function timeAgo(date: Date) {
-    const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
-    let interval = seconds / 3600;
-    if (interval > 1) return Math.floor(interval) + "h ago";
-    interval = seconds / 60;
-    if (interval > 1) return Math.floor(interval) + "m ago";
-    return Math.floor(seconds) + "s ago";
+  const seconds = Math.floor((new Date().getTime() - new Date(date).getTime()) / 1000);
+  let interval = seconds / 3600;
+  if (interval > 1) return Math.floor(interval) + "h ago";
+  interval = seconds / 60;
+  if (interval > 1) return Math.floor(interval) + "m ago";
+  return Math.floor(seconds) + "s ago";
 }
 
 export default function AuditPage() {
@@ -47,7 +45,7 @@ export default function AuditPage() {
                   className="flex items-center gap-4 p-4 hover:bg-slate-50 transition-colors"
                 >
                   <div className="flex h-10 w-10 flex-none items-center justify-center rounded-full bg-slate-100 ring-1 ring-slate-200">
-                    <Activity className="h-5 w-5 text-slate-500" />
+                    <img src="https://img.icons8.com/ios-filled/50/64748b/activity.png" alt="activity" className="h-5 w-5 object-contain" />
                   </div>
                   <div className="flex-auto">
                     <div className="flex items-baseline justify-between gap-x-4">
@@ -55,7 +53,7 @@ export default function AuditPage() {
                         {log.action}
                       </p>
                       <p className="flex-none text-xs text-slate-500">
-                        <Clock className="mr-1 inline h-3 w-3" />
+                        <img src="https://img.icons8.com/ios-filled/50/64748b/time.png" alt="time" className="mr-1 inline h-3 w-3 object-contain" />
                         {timeAgo(log.timestamp)}
                       </p>
                     </div>
@@ -71,7 +69,7 @@ export default function AuditPage() {
             </AnimatePresence>
 
             {logs.length === 0 && (
-                <li className="p-8 text-center text-slate-500">No logs recorded yet.</li>
+              <li className="p-8 text-center text-slate-500">No logs recorded yet.</li>
             )}
           </ul>
         </div>

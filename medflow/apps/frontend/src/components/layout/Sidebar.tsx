@@ -4,24 +4,15 @@ import React from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useStore } from "@/lib/store";
-import {
-  LayoutDashboard,
-  Bed,
-  Users,
-  Activity,
-  LogOut,
-  ClipboardList,
-  ArrowUpRight
-} from "lucide-react";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
 
 const NAV_ITEMS = [
-  { label: "Command Center", href: "/dashboard", icon: LayoutDashboard },
-  { label: "ED Requests", href: "/dashboard/requests", icon: Users },
-  { label: "Ward View", href: "/dashboard/wards", icon: Bed },
-  { label: "Discharges", href: "/dashboard/discharges", icon: ArrowUpRight },
-  { label: "Audit Logs", href: "/dashboard/audit", icon: ClipboardList },
+  { label: "Command Center", href: "/dashboard", icon: "https://img.icons8.com/ios-filled/50/ffffff/dashboard.png" },
+  { label: "ED Requests", href: "/dashboard/requests", icon: "https://img.icons8.com/ios-filled/50/ffffff/user-group-man-man.png" },
+  { label: "Ward View", href: "/dashboard/wards", icon: "https://img.icons8.com/ios-filled/50/ffffff/hospital-bed.png" },
+  { label: "Discharges", href: "/dashboard/discharges", icon: "https://img.icons8.com/ios-filled/50/ffffff/up-right-arrow.png" },
+  { label: "Audit Logs", href: "/dashboard/audit", icon: "https://img.icons8.com/ios-filled/50/ffffff/clipboard.png" },
 ];
 
 export function Sidebar() {
@@ -38,12 +29,11 @@ export function Sidebar() {
     <aside className="fixed left-0 top-0 z-40 flex h-screen w-64 flex-col border-r border-slate-200 bg-white/80 backdrop-blur-xl transition-all duration-300">
       <div className="flex h-16 w-full items-center border-b border-slate-100 px-6 bg-white/50 backdrop-blur-md">
         <div className="flex items-center gap-3">
-          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-white shadow-sm shadow-blue-500/30">
-            <Activity className="h-5 w-5" />
-          </div>
-          <span className="text-lg font-bold tracking-tight text-slate-900">
-            MedFlow
-          </span>
+          <img
+            src="https://kbth.gov.gh/wp-content/uploads/2025/01/cropped-kbth-logo-Photoroom-1.png"
+            alt="KBTH Logo"
+            className="h-10 w-auto object-contain"
+          />
         </div>
       </div>
 
@@ -70,10 +60,12 @@ export function Sidebar() {
                 />
               )}
               <span className="relative z-10 flex items-center gap-3">
-                <Icon
+                <img
+                  src={item.icon}
+                  alt={item.label}
                   className={clsx(
-                    "h-5 w-5 transition-colors",
-                    isActive ? "text-white" : "text-slate-400 group-hover:text-slate-600"
+                    "h-5 w-5 transition-all",
+                    isActive ? "opacity-100" : "opacity-50 grayscale group-hover:grayscale-0 group-hover:opacity-80"
                   )}
                 />
                 {item.label}
@@ -100,7 +92,8 @@ export function Sidebar() {
               className="group flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full text-slate-400 hover:bg-red-50 hover:text-red-600 transition-colors"
               title="Sign Out"
             >
-              <LogOut className="h-5 w-5" />
+              <img src="https://img.icons8.com/ios-filled/50/94a3b8/logout-rounded.png" alt="logout" className="h-5 w-5 object-contain group-hover:hidden" />
+              <img src="https://img.icons8.com/ios-filled/50/dc2626/logout-rounded.png" alt="logout hover" className="h-5 w-5 object-contain hidden group-hover:block" />
             </button>
           </div>
         </div>

@@ -4,18 +4,17 @@ import React, { useEffect, useState } from "react";
 import { Card } from "@/components/ui/Card";
 import { motion, useSpring, useTransform } from "framer-motion";
 import { clsx } from "clsx";
-import { LucideIcon } from "lucide-react";
 
 interface KPICardProps {
   title: string;
   value: number;
   suffix?: string;
-  icon: LucideIcon;
+  icon: string;
   trend?: { value: number; isPositive: boolean };
   color?: "blue" | "green" | "amber" | "red";
 }
 
-export function KPICard({ title, value, suffix = "", icon: Icon, trend, color = "blue" }: KPICardProps) {
+export function KPICard({ title, value, suffix = "", icon, trend, color = "blue" }: KPICardProps) {
   const spring = useSpring(0, { stiffness: 50, damping: 15 });
   const displayValue = useTransform(spring, (current) => Math.round(current));
 
@@ -43,7 +42,7 @@ export function KPICard({ title, value, suffix = "", icon: Icon, trend, color = 
           </div>
         </div>
         <div className={clsx("rounded-xl p-2.5", colors[color])}>
-          <Icon className="h-5 w-5" />
+          <img src={icon} alt={title} className="h-5 w-5 object-contain" />
         </div>
       </div>
       {trend && (

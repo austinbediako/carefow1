@@ -1,14 +1,21 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-inter);
-  --color-med-bg: #F5F5F7;
-  --color-med-card: #FFFFFF;
-  --color-med-text: #1C1C1E;
-  --color-med-sub: #6E6E73;
-  --color-med-border: #E5E5EA;
+  --font-sans: var(--font-poppins);
+  --font-heading: var(--font-be-vietnam-pro);
+  
+  /* KBTH Branding Colors */
+  --color-kbth-primary: #082125;
+  --color-kbth-primary-light: #123B42;
+  --color-kbth-accent: #2EA3F2;
+  --color-kbth-accent-hover: #1b8cdb;
+  --color-kbth-bg: #FFFFFF;
+  --color-kbth-bg-alt: #F8FAFC;
+  --color-kbth-text: #1C1C1E;
+  --color-kbth-sub: #6E6E73;
+  --color-kbth-border: #E2E8F0;
 
-  /* Semantic Colors (Muted Apple Style) */
+  /* Semantic Colors (Retained for existing components if needed) */
   --color-semantic-blue: #007AFF;
   --color-semantic-blue-bg: #E5F3FF;
   --color-semantic-green: #34C759;
@@ -31,8 +38,7 @@
 }
 
 @utility squircle {
-  border-radius: 18px; /* Approximate squircle feel */
-  /* Advanced CSS for continuous curvature could be added via mask-image, but radius is sufficient for MVP */
+  border-radius: 18px;
 }
 
 @utility soft-shadow {
@@ -49,6 +55,7 @@
 
 body {
   font-feature-settings: "cv11", "ss01";
-  background-color: var(--color-med-bg);
-  color: var(--color-med-text);
+  background-color: var(--color-kbth-bg);
+  color: var(--color-kbth-text);
 }
+

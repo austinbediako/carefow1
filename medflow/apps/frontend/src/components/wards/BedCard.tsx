@@ -7,7 +7,6 @@ import { Badge } from "@/components/ui/Badge";
 import { useStore } from "@/lib/store";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
-import { User, Activity, Check, SprayCan, AlertCircle, Ban } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 
 interface BedCardProps {
@@ -27,14 +26,14 @@ export function BedCard({ bed, wardId }: BedCardProps) {
   };
 
   const statusIcons = {
-    AVAILABLE: Check,
-    OCCUPIED: User,
-    RESERVED: AlertCircle,
-    CLEANING: SprayCan,
-    OUT_OF_SERVICE: Ban,
+    AVAILABLE: "https://img.icons8.com/ios-filled/50/475569/checkmark--v1.png",
+    OCCUPIED: "https://img.icons8.com/ios-filled/50/475569/user.png",
+    RESERVED: "https://img.icons8.com/ios-filled/50/475569/error--v1.png",
+    CLEANING: "https://img.icons8.com/ios-filled/50/475569/cleaning.png",
+    OUT_OF_SERVICE: "https://img.icons8.com/ios-filled/50/475569/do-not-disturb.png",
   };
 
-  const Icon = statusIcons[bed.status];
+  const iconUrl = statusIcons[bed.status] || statusIcons.OUT_OF_SERVICE;
 
   return (
     <motion.div
@@ -55,7 +54,7 @@ export function BedCard({ bed, wardId }: BedCardProps) {
         <div className="flex justify-between items-start mb-3">
           <div className="flex items-center gap-2">
             <div className={clsx("p-1.5 rounded-lg bg-white/50")}>
-              <Icon className="h-4 w-4 text-slate-600" />
+              <img src={iconUrl} alt={bed.status} className="h-4 w-4 object-contain" />
             </div>
             <span className="font-semibold text-slate-900">{bed.name}</span>
           </div>
@@ -64,10 +63,10 @@ export function BedCard({ bed, wardId }: BedCardProps) {
               bed.status === "AVAILABLE"
                 ? "green"
                 : bed.status === "OCCUPIED"
-                ? "blue"
-                : bed.status === "CLEANING"
-                ? "amber"
-                : "gray"
+                  ? "blue"
+                  : bed.status === "CLEANING"
+                    ? "amber"
+                    : "gray"
             }
           >
             {bed.status}
